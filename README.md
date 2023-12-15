@@ -22,3 +22,5 @@ In the case of a tenant-oriented time, I suggest the following solution
 3) To convert the time to the tenant's time, I suggest that all fields be marked with an attribute, and add a handle for MediaR that will change the time to the tenant's time through reflection
 
 But my main proposal is to store the time in the UTC format and it is the front that will be able to convert the time into the user's time
+
+In any questions about anything, please contact me!
