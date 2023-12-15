@@ -10,3 +10,15 @@ This is a WEB API project for the test task
 For non-coding task 
 I added a design file, you can open it in the browser to see it. 
 I tried to write all my minds as a comment there, but in any case please ask me for any scenario
+
+I haven't thought about fault tolerance or anything else that isn't related to tenants and timekeeping.
+
+I assumed two options to save time. 
+How to save time in UTC, and where the front end can translate the time to the user's time using the timezone in the browser,
+and in a concept where the user can see the time exactly configured for the tenant.
+In the case of a tenant-oriented time, I suggest the following solution
+1) We save the timezone in the tenant record. which we can access everywhere through the ITenant interface that will be initialized through TenantMiddleware
+2) In the same way, store all time through UTS, and convert it before sending it to the front. this will allow you to change the time zone of the tenant without changing all the time in the database
+3) To convert the time to the tenant's time, I suggest that all fields be marked with an attribute, and add a handle for MediaR that will change the time to the tenant's time through reflection
+
+But my main proposal is to store the time in the UTC format and it is the front that will be able to convert the time into the user's time
