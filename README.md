@@ -6,3 +6,7 @@ This is a WEB API project for the test task
 4) I use PostgreSQL and implement Swagger, so you can run and test it
 5) For testing you need to pass for the connection string in appsettings.json and also to AppDbContext.cs
 6) I added a "workaround" to repositories to add doctor entity and patient entity, so it is possible to play with visit API without adding doctors and patient info
+
+For non-coding task 
+I added a design file, you can open it in the browser to see it. 
+I tried to write all my minds as a comment there, but in any case please ask me for any scenario
