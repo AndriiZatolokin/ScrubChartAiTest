@@ -49,9 +49,21 @@ namespace ScrubChartAiTest.Repositories
             return await _dbContext.Visits.Where(v => v.StartDate == startDate).ToListAsync(cancellationToken);
         }
 
-        public async Task<List<Visit>> GetVisitListAsync(CancellationToken cancellationToken)
+        public async Task<List<Visit>> GetVisitListAsync(string? parienName, DateTime? startDate, CancellationToken cancellationToken)
         {
-            return await _dbContext.Visits.ToListAsync(cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var visits = _dbContext.Visits.AsQueryable();
+            if (parienName != null)
+            {
+                visits = visits.Where(v => v.PatientName == parienName);
+            }
+            if (startDate != null)
+            {
+                visits = visits.Where(v => v.StartDate == startDate);
+            }
+
+            return await visits.ToListAsync(cancellationToken);
         }
 
         public async Task<int> UpdateVisitAsync(Visit visit)

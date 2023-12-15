@@ -16,7 +16,7 @@ namespace ScrubChartAiTest.Handlers
 
         public async Task<List<Visit>> Handle(GetVisitListQuery query, CancellationToken cancellationToken)
         {
-            return await _repository.GetVisitListAsync(cancellationToken);
+            return await _repository.GetVisitListAsync(query.PatientName, query.DateTime, cancellationToken);
         }
     }
 }

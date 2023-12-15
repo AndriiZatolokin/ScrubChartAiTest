@@ -18,9 +18,14 @@ namespace ScrubChartAiTest.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Visit>>> GetVistiListAsync()
+        public async Task<ActionResult<List<Visit>>> GetVistiListAsync(string? patientName, DateTime? dateTime)
         {
-            var result = await mediator.Send(new GetVisitListQuery());
+            var result = await mediator.Send(
+                new GetVisitListQuery() 
+                {
+                    DateTime = dateTime,
+                    PatientName = patientName
+                });
 
             return Ok(result);
         }
